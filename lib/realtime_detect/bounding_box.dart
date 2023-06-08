@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import '../consts.dart';
+import '../widgets/showWordDialog.dart';
 
 class BndBox extends StatelessWidget {
   final List<dynamic> results;
@@ -56,24 +57,23 @@ class BndBox extends StatelessWidget {
                 width: 3.0,
               ),
             ),
-            // child: Text(
-            //   "${re["detectedClass"]} ${(re["confidenceInClass"] * 100).toStringAsFixed(0)}%",
-            //   style: const TextStyle(
-            //     // color: Color.fromRGBO(37, 213, 253, 1.0),
-            //     color: Colors.white,
-            //     fontSize: 16,
-            //     fontWeight: FontWeight.bold,
-            //     backgroundColor: Colors.black38,
-            //   ),
-            // ),
-            child: Text(
-              "${re["detectedClass"]}",
-              style: const TextStyle(
-                // color: Color.fromRGBO(37, 213, 253, 1.0),
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                backgroundColor: Colors.black38,
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: TextButton(
+                child: Text(
+                  "${re["detectedClass"]}",
+                  style: const TextStyle(
+                    // color: Color.fromRGBO(37, 213, 253, 1.0),
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    backgroundColor: Colors.black38,
+                  ),
+                ),
+                onPressed: () => showWordDialog(
+                  context: context,
+                  keyword: re["detectedClass"],
+                ),
               ),
             ),
           ),
